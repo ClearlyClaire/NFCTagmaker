@@ -46,5 +46,7 @@ public class NFCTagmakerSettings {
 	public static String name;
 	public static String email;
 	public static String web;
+	public static String im;
+	public static String pgp;
 
 }

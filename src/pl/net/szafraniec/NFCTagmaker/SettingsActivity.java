@@ -59,6 +59,10 @@ public class SettingsActivity extends Activity {
 		email.setText(NFCTagmakerSettings.email);
 		EditText web = (EditText) findViewById(R.id.web);
 		web.setText(NFCTagmakerSettings.web);
+		EditText im = (EditText) findViewById(R.id.im);
+		im.setText(NFCTagmakerSettings.im);
+		EditText pgp = (EditText) findViewById(R.id.pgp);
+		pgp.setText(NFCTagmakerSettings.pgp);
 
 		Button x = (Button) findViewById(R.id.ok);
 		x.setOnClickListener(new View.OnClickListener() {
@@ -83,6 +87,10 @@ public class SettingsActivity extends Activity {
 		NFCTagmakerSettings.email = email.getText().toString();
 		EditText web = (EditText) findViewById(R.id.web);
 		NFCTagmakerSettings.web = web.getText().toString();
+		EditText im = (EditText) findViewById(R.id.im);
+		NFCTagmakerSettings.im = im.getText().toString();
+		EditText pgp = (EditText) findViewById(R.id.pgp);
+		NFCTagmakerSettings.pgp = pgp.getText().toString();
 		SharedPreferences settings = getSharedPreferences(
 				NFCTagmakerSettings.PREFS_NAME, 0);
 		SharedPreferences.Editor editor = settings.edit();
@@ -91,6 +99,8 @@ public class SettingsActivity extends Activity {
 		editor.putString("phone", NFCTagmakerSettings.phone);
 		editor.putString("web", NFCTagmakerSettings.web);
 		editor.putString("email", NFCTagmakerSettings.email);
+		editor.putString("im", NFCTagmakerSettings.im);
+		editor.putString("pgp", NFCTagmakerSettings.pgp);
 		editor.commit();
 	}
 

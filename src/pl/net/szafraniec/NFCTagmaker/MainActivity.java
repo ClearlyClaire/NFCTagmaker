@@ -226,6 +226,10 @@ public class MainActivity extends Activity {
 				getString(R.string.defaultEmail));
 		NFCTagmakerSettings.web = settings.getString("web",
 				getString(R.string.defaultWeb));
+		NFCTagmakerSettings.im = settings.getString("im",
+				getString(R.string.defaultIM));
+		NFCTagmakerSettings.pgp = settings.getString("pgp",
+				getString(R.string.defaultPGP));
 
 		Intent intent = getIntent();
 		String action = intent.getAction();
@@ -358,22 +362,32 @@ public class MainActivity extends Activity {
 		wvc.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View self) {
-				String vcardcontent = "BEGIN:VCARD\r\nVERSION:2.1\r\nN:"
+				String vcardcontent = "BEGIN:VCARD\r\nVERSION:3.0\r\nN:"
 						+ NFCTagmakerSettings.name + "\r\n";
 
 				if (NFCTagmakerSettings.phone.length() > 3) {
-					vcardcontent = vcardcontent + "TEL;CELL:"
+					vcardcontent = vcardcontent + "TEL;TYPE=cell:"
 							+ NFCTagmakerSettings.phone + "\r\n";
 				}
 
 				if (NFCTagmakerSettings.email.length() > 6) {
-					vcardcontent = vcardcontent + "EMAIL;INTERNET:"
+					vcardcontent = vcardcontent + "EMAIL:"
 							+ NFCTagmakerSettings.email + "\r\n";
 				}
 
 				if (NFCTagmakerSettings.web.length() > 6) {
 					vcardcontent = vcardcontent + "URL:"
 							+ NFCTagmakerSettings.web + "\r\n";
+				}
+
+				if (NFCTagmakerSettings.im.length() > 6) {
+					vcardcontent = vcardcontent + "IMPP:"
+							+ NFCTagmakerSettings.im + "\r\n";
+				}
+
+				if (NFCTagmakerSettings.pgp.length() > 6) {
+					vcardcontent = vcardcontent + "KEY;TYPE=PGP:"
+							+ NFCTagmakerSettings.pgp + "\r\n";
 				}
 
 				vcardcontent = vcardcontent + "END:VCARD\r\n";

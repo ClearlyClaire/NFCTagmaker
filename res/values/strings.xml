@@ -17,6 +17,8 @@
 	<string name="defaultPhone"></string>
 	<string name="defaultWeb"></string>
 	<string name="defaultEmail"></string>
+	<string name="defaultIM"></string>
+	<string name="defaultPGP"></string>
 	<string name="type1uri">NFC Forum type (1) URi record</string>
 	<string name="writeuri">Write URI</string>
 	<string name="smartposter">Smart poster</string>
@@ -29,6 +31,8 @@
 	<string name="phone">Phone</string>
 	<string name="email">Email</string>
 	<string name="web">Web</string>
+	<string name="im">Instant Messaging</string>
+	<string name="pgp">PGP key URL</string>
 	<string name="advanced">Advanced</string>
 	<string name="write">Write</string>
 	<string name="read">Read</string>
