@@ -66,27 +66,6 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
-	public static final String PREF_RUNCOUNT = "run_count";
-	private static final String APP_LINK = "https://play.google.com/store/apps/details?id="
-			+ R.class.getPackage().getName();
-	public static final Uri URI_APP_LINK = Uri.parse(APP_LINK);
-	private static final String DONATE_APP_LINK = "https://play.google.com/store/apps/details?id=pl.net.szafraniec.kontakty";
-
-	public static final Uri URI_DONATE_APP_LINK = Uri.parse(DONATE_APP_LINK);
-
-	public static int getRunCount(Context context) {
-		SharedPreferences prefs = context
-				.getSharedPreferences(PREF_RUNCOUNT, 0);
-		return prefs.getInt(PREF_RUNCOUNT, 0);
-	}
-
-	public static void setRunCount(Context context, int RunCount) {
-		SharedPreferences.Editor prefs = context.getSharedPreferences(
-				PREF_RUNCOUNT, 0).edit();
-		prefs.putInt(PREF_RUNCOUNT, RunCount);
-		prefs.commit();
-	}
-
 	final public int ABOUT = 0;
 	public static String version;
 
@@ -234,14 +213,6 @@ public class MainActivity extends Activity {
 						.show();
 				startActivity(new Intent(Settings.ACTION_NFC_SETTINGS));
 			}
-		}
-		int RunCount = getRunCount(this);
-		if (RunCount == 4) {
-			showDialog(1);
-		}
-		if (RunCount < 6) {
-			RunCount = RunCount + 1;
-			setRunCount(this, RunCount);
 		}
 		SharedPreferences settings = getSharedPreferences(
 				NFCTagmakerSettings.PREFS_NAME, 0);
@@ -417,93 +388,6 @@ public class MainActivity extends Activity {
 	}
 
 	@Override
-	protected Dialog onCreateDialog(int id) {
-		// We have only one dialog.
-		Dialog dialog;
-		AlertDialog.Builder builder;
-		switch (id) {
-		case 1:
-			builder = new AlertDialog.Builder(this);
-			builder.setMessage(getResources().getString(R.string.rate_text))
-					.setTitle(getResources().getString(R.string.menu_item_rate))
-					.setCancelable(false)
-					.setPositiveButton(
-							getResources().getString(R.string.menu_item_rate),
-							new DialogInterface.OnClickListener() {
-								@Override
-								public void onClick(DialogInterface dialog,
-										int id) {
-									// Do something here
-									Intent GooglePlayIntent = new Intent(
-											Intent.ACTION_VIEW,
-											MainActivity.URI_APP_LINK);
-									startActivity(GooglePlayIntent);
-								}
-							})
-					.setNegativeButton(
-							getResources().getString(android.R.string.cancel),
-							new DialogInterface.OnClickListener() {
-								@Override
-								public void onClick(DialogInterface dialog,
-										int id) {
-									// Do something here
-								}
-							})
-					.setNeutralButton(
-							getResources().getString(R.string.menu_item_donate),
-							new DialogInterface.OnClickListener() {
-								@Override
-								public void onClick(DialogInterface dialog,
-										int id) {
-									// Do something here
-									Intent GooglePlayIntent = new Intent(
-											Intent.ACTION_VIEW,
-											MainActivity.URI_DONATE_APP_LINK);
-									startActivity(GooglePlayIntent);
-								}
-							});
-
-			dialog = builder.create();
-			break;
-		case 2:
-			builder = new AlertDialog.Builder(this);
-			builder.setMessage(getResources().getString(R.string.donate_text))
-					.setTitle(
-							getResources().getString(R.string.menu_item_donate))
-					.setCancelable(false)
-					.setPositiveButton(
-							getResources().getString(R.string.menu_item_donate),
-							new DialogInterface.OnClickListener() {
-								@Override
-								public void onClick(DialogInterface dialog,
-										int id) {
-									// Do something here
-									Intent GooglePlayIntent = new Intent(
-											Intent.ACTION_VIEW,
-											MainActivity.URI_DONATE_APP_LINK);
-									startActivity(GooglePlayIntent);
-								}
-							})
-					.setNegativeButton(
-							getResources().getString(android.R.string.cancel),
-							new DialogInterface.OnClickListener() {
-								@Override
-								public void onClick(DialogInterface dialog,
-										int id) {
-									// Do something here
-								}
-							});
-
-			dialog = builder.create();
-			break;
-		default:
-			dialog = null;
-		}
-		return dialog;
-
-	}
-
-	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
@@ -542,18 +426,6 @@ public class MainActivity extends Activity {
 			about.setTitle(getString(R.string.About));
 			about.show();
 			break;
-		case R.id.menu_item_rate:
-			showDialog(1);
-			// Intent marketIntent = new Intent(
-			// Intent.ACTION_VIEW, URI_APP_LINK);
-			// activity.startActivity(marketIntent);
-			return true;
-		case R.id.menu_item_donate:
-			showDialog(2);
-			// Intent marketIntent = new Intent(
-			// Intent.ACTION_VIEW, URI_APP_LINK);
-			// activity.startActivity(marketIntent);
-			return true;
 		case R.id.settings:
 			Intent settings = new Intent(getApplicationContext(),
 					SettingsActivity.class);
