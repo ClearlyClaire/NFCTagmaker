@@ -70,5 +70,15 @@ public class AdvancedActivity extends Activity {
 			}
 		});
 
+		Button lock = (Button) findViewById(R.id.lock);
+		lock.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View self) {
+				Intent intent = new Intent(getApplicationContext(),
+						LockNFCActivity.class);
+				startActivity(intent);
+			}
+		});
+
 	}
 }

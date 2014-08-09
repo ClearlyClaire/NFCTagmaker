@@ -49,6 +49,8 @@
         </activity>
         <activity android:name="WriteNFCActivity" >
         </activity>
+        <activity android:name="LockNFCActivity" >
+        </activity>
         <activity
             android:name="UltralightHEXEDIT"
             android:screenOrientation="nosensor"

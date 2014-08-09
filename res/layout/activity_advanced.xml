@@ -20,11 +20,21 @@
             android:text="@string/CloneNFCTag" />
 
         <Button
+            android:id="@+id/lock"
+            android:layout_width="120dp"
+            android:layout_height="96dp"
+            android:layout_below="@+id/clone"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="18dp"
+            android:textColor="#CC0000"
+            android:text="@string/LockNFCTag" />
+
+        <Button
             android:id="@+id/ultralight"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="120dp"
             android:layout_height="96dp"
-            android:layout_below="@+id/clone"
+            android:layout_below="@+id/lock"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15dp"
             android:text="Mifare Ultralight HEXEDIT"

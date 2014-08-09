@@ -9,6 +9,7 @@
 	<string name="Exit">Exit</string>
 	<string name="About">About</string>
 	<string name="CloneNFCTag">Clone NFC tag</string>
+	<string name="LockNFCTag">Lock NFC tag</string>
 	<string name="CantFindNFCAdapter">Can\'t find any NFC adapter. Probably your device doesn\'t have it at all&#8230;</string>
 	<string name="EnabeNFCFirst">NFC adapter is disabled. Please enable it first</string>
 	<string name="Settings">Settings</string>
